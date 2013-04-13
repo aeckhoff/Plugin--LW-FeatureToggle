@@ -2,28 +2,52 @@
 
 namespace LwFeatureToggle;
 
-class FeatureCollection
+class FeatureCollection implements \Iterator
 {
     private $Collection = array();
-    private $FeatureConfiguration = array();
+    private $position = 0;
 
-    public function __construct($FeatureConfiguration)
+    public function __construct()
     {
-        $this->FeatureConfiguration = $FeatureConfiguration;
+        $this->position = 0;
     }
     
-    public function addFeature($feature)
+    public function addFeature(\LwFeatureToggle\Feature $feature)
     {
-        $this->Collection[$feature->getName()] = $feature;
-    }
-    
-    public function removeFeature($featureName)
-    {
-        $this->Collection[$featureName] = false;
+        $this->Collection[] = $feature;
     }
     
     public function getFeature($featureName)
     {
-        return $this->Collection[$featureName];
+        foreach($this->Collection as $feature) {
+            if ($feature->getName() == $featureName) {
+                return $feature;
+            }
+        }
+    }
+    
+    function count()
+    {
+        return count($this->Collection);
+    }
+    
+    function rewind() {
+        $this->position = 0;
+    }
+
+    function current() {
+        return $this->Collection[$this->position];
+    }
+
+    function key() {
+        return $this->position;
+    }
+
+    function next() {
+        ++$this->position;
+    }    
+    
+    function valid() {
+        return isset($this->Collection[$this->position]);
     }
 }

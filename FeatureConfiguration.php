@@ -2,7 +2,7 @@
 
 namespace LwFeatureToggle;
 
-class FeatureConfiguration
+class FeatureConfiguration 
 {
     private $ConfigurationArray = array();
     private $PathToConfigurationFile = "";
@@ -12,13 +12,18 @@ class FeatureConfiguration
         $this->PathToConfigurationFile = $PathToConfigurationFile;
     }
 
-    public function loadConfiguration()
+    public function getConfigurationArrayFeatureSet($FeatureSet)
     {
-        $this->$ConfigurationArray = parse_ini_file($this->PathToConfigurationFile, true);
+        return $this->ConfigurationArray[$FeatureSet];
     }
     
-    public function getConfigurationEntryByFeatureName($FeatureName) 
+    public function loadConfiguration()
     {
-        return $this->$ConfigurationArray[$FeatureName];
+        $this->ConfigurationArray = parse_ini_file($this->PathToConfigurationFile, true);
+    }
+    
+    public function getConfigurationEntryByFeatureNameAndFeatureSet($FeatureName, $FeatureSet) 
+    {
+        return $this->ConfigurationArray[$FeatureSet][$FeatureName];
     }
 }

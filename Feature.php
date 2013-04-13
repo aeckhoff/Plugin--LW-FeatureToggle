@@ -22,9 +22,9 @@ class Feature
         return $this->IsFeatureActive;
     }
     
-    public function setState($bool)
+    public function setState($active)
     {
-        if ($bool === true) {
+        if ($active == 1) {
             $this->IsFeatureActive = true;
         }
         else {
