@@ -12,7 +12,8 @@ Feature Toggle System to easily switch Features on and off via a configuration
 **Feature Collection Factory**: build a Feature Collection based on a Feature Set taken from the Feature Configuration
 
 
-Simple Example:
+Simple Example
+--------------
 
 a) Configuration File 
 
