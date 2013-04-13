@@ -30,17 +30,16 @@ namespace LwFeatureToggle;
 class FeatureCollectionFactory
 {
     /**
+     * buildFeatureCollection
+     * 
      * Returns the instantiated Feature Object
-     *
-     * The key of the array should represent the line number and the value
-     * should represent the number of warnings that should occur on that line.
      *
      * @param Object FeatureConfiguration FeatureConfiguration Object containing the actual feature Configuration
      * @param String FeatureSet SetName that should be used to build the FeatureCollection
      * 
      * @return array(int => int)
      */       
-    public static function createFeatureCollection(\LwFeatureToggle\FeatureConfiguration $FeatureConfiguration, $FeatureSet="default")
+    public static function buildFeatureCollection(\LwFeatureToggle\FeatureConfiguration $FeatureConfiguration, $FeatureSet="default")
     {
         $FeatureCollection = new \LwFeatureToggle\FeatureCollection();
         $ConfigurationByFeatureSet = $FeatureConfiguration->getConfigurationArrayFeatureSet($FeatureSet);
