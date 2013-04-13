@@ -34,6 +34,6 @@ b) Building the Collection
 c) Switching the Feature Code
 
     if ($FeatureCollection->getFeature("MyNewFeature")->isActive()) {
-        Feature Code
+        ...Feature Code...
     }
 
