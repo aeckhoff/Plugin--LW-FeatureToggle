@@ -1,7 +1,7 @@
 Plugin--LW-FeatureToggle
 ========================
 
-Feature Toggle System to easily switch Features on and off via a configuration
+First very simple implementation of a Feature Toggle System to easily switch Features on and off via a configuration.
 
 **Feature Configuration**: loads Feature States by a Feature Set Name from a configuration File
 
