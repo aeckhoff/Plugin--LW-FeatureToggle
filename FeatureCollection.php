@@ -1,22 +1,59 @@
 <?php
 
+/**
+* This file is part of the LW Feature Toggle Plugin
+*
+* PHP version 5.3
+*
+* @category PHP
+* @package LwFeatureToggle
+* @author Dr. Andreas Eckhoff <andreas.eckhoff@logi-works.de>
+* @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
+* @version GIT: trunk
+* @link https://github.com/aeckhoff/Plugin--LW-FeatureToggle
+*/
+
 namespace LwFeatureToggle;
 
-class FeatureCollection implements \Iterator
+/**
+* Feature Collection
+*
+* A Class that holds a collection of Features
+*
+* @category PHP
+* @package LwFeatureToggle
+* @author Dr. Andreas Eckhoff <andreas.eckhoff@logi-works.de>
+* @copyright 2013 Dr. Andreas Eckhoff
+* @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
+* @link https://github.com/aeckhoff/Plugin--LW-FeatureToggle
+*/
+class FeatureCollection
 {
     private $Collection = array();
-    private $position = 0;
 
     public function __construct()
     {
-        $this->position = 0;
     }
-    
+   
+    /**
+     * addFeature
+     *
+     * Method to add a Feature to the Collection
+     *
+     * @param Object Feature Feature Object that should be added to the Collection
+     */
     public function addFeature(\LwFeatureToggle\Feature $feature)
     {
         $this->Collection[] = $feature;
     }
     
+    /**
+     * getFeature
+     *
+     * Method to retrieve a Feature from the Collection
+     *
+     * @param String FeatureName FeatureName of the desired Feature
+     */
     public function getFeature($featureName)
     {
         foreach($this->Collection as $feature) {
@@ -24,30 +61,5 @@ class FeatureCollection implements \Iterator
                 return $feature;
             }
         }
-    }
-    
-    function count()
-    {
-        return count($this->Collection);
-    }
-    
-    function rewind() {
-        $this->position = 0;
-    }
-
-    function current() {
-        return $this->Collection[$this->position];
-    }
-
-    function key() {
-        return $this->position;
-    }
-
-    function next() {
-        ++$this->position;
-    }    
-    
-    function valid() {
-        return isset($this->Collection[$this->position]);
     }
 }
