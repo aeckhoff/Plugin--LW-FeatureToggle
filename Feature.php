@@ -29,8 +29,8 @@ namespace LwFeatureToggle;
 */
 class Feature
 {
-    private $IsFeatureActive = false;
-    private $FeatureName = "";
+    protected $IsFeatureActive = false;
+    protected $FeatureName = "";
 
     /**
      * Construtor

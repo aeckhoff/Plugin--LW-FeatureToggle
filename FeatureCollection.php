@@ -29,10 +29,12 @@ namespace LwFeatureToggle;
 */
 class FeatureCollection
 {
-    private $Collection = array();
+    protected $Collection = array();
+    protected $DefaultFeature;
 
     public function __construct()
     {
+        $this->DefaultFeature = \LwFeatureToggle\FeatureFactory::buildFeature('default', false);
     }
    
     /**
@@ -52,7 +54,7 @@ class FeatureCollection
      *
      * Method to retrieve a Feature from the Collection
      *
-     * @param String FeatureName FeatureName of the desired Feature
+     * @param Object Feature Object the desired Feature
      */
     public function getFeature($featureName)
     {
@@ -61,5 +63,6 @@ class FeatureCollection
                 return $feature;
             }
         }
+        return $this->DefaultFeature;
     }
 }

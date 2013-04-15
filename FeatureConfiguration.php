@@ -29,8 +29,8 @@ namespace LwFeatureToggle;
 */
 class FeatureConfiguration 
 {
-    private $ConfigurationArray = array();
-    private $PathToConfigurationFile = "";
+    protected $ConfigurationArray = array();
+    protected $PathToConfigurationFile = "";
 
     /**
      * Construtor
